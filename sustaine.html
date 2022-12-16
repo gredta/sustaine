@@ -6,156 +6,142 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="style.css">
 <link rel="icon" type="image/x-icon" href="images/favicon.png">
-<!--<script src="script.js"></script>-->
-<!--<script src="script2.js"></script>-->
-</head>
-<body>
-
-<!-- Load an icon library to show a hamburger menu (bars) on small screens -->
+<link rel="font" type="font" href="digital-7.ttf">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 
-<div class="header">
-</div>
+<body>
+<div class="header"></div>
 
-  <div id="navbar">
+<div id="navbar">
     <a class="active" href="sustaine.html">Home</a>
+	<div class="dropdown">
+		<button class="dropbtn">Donate
+		  <i class="fa fa-caret-down"></i>
+		</button>
+		<div class="dropdown-content">
+		  <a href="pages/drop-off.html">Drop-Off</a>
+		  <a href="pages/mail-in.html">Mail-In</a>
+		  <a href="pages/pickup-services.html">Pickup Services</a>
+		</div>
+	  </div> 
+	<div class="dropdown">
+		<button class="dropbtn">Boroughs
+		  <i class="fa fa-caret-down"></i>
+		</button>
+		<div class="dropdown-content">
+		  <a href="pages/manhattan.html">Manhattan</a>
+		  <a href="pages/queens.html">Queens</a>
+		  <a href="pages/brooklyn.html">Brooklyn</a>
+		  <a href="pages/the-bronx.html">The Bronx</a>
+		  <a href="pages/staten-island.html">Staten Island</a>
+		</div>
+	  </div> 
     <a href="pages/about.html">About</a>
     <a href="pages/submit.html">Submit</a>
-    <a href="pages/research.html">Research</a>
-    <a href="pages/progress.html">Progress</a>
+	<a href="pages/contact.html">Contact</a>
+	</a>
   </div>
-  
+  <div class="content">
+	<div class="hamburger-menu">
+		<input id="menu__toggle" type="checkbox" />
+		<label class="menu__btn" for="menu__toggle">
+		<span></span>
+		</label>
 
-<div class="width">
-<h1><a href="sustaine.html">Sustaine</a></h1>
-<h2>Live Sustainably.</h2>
-<p>The general idea for my project is a website called Sustaine. As a New Yorker, I find it hard to find donation
-    locations a lot of the time and the donation locations that do exist don't really have a lot of information about
-    the charity, what we can donate, and other useful resources involving donations. I want to generate an Google Maps API that
-    compiles local NYC donations and charities where New Yorkers can drop off clothes and get a good idea of where their
-    old clothes are going as well as to promote sustainability in fashion and encourage charitability among users. </p>
-
-<h2>NYC Donation Drop-Off Sites</h2>
-
-<div id="map"></div>
-
-<p>I added a marker in each borough for drop-off sites in NYC and will continue to research more drop-off location centers. I'm
-    also planning on including mailing donation information for people who would rather ship their donations instead of
-    going to their physical donation site. I'll be compiling a list of mailing addresses that accept donations and local
-    USPS offices. I also plan on making this project a bit more functional and have a search bar where users can enter in 
-    their ZIP codes and the map will show them their own local donation drop off sites, instead of the entire map of NYC,
-    and I also may include an option that allows people to mark a donation site that may not be listed on the map already.
-</p>
-</div>
-</div>
-<script>    
-function myFunction() {
-    if (window.pageYOffset >= sticky) {
-      navbar.classList.add("sticky")
-    } else {
-      navbar.classList.remove("sticky");
-    }
-  }
+		<ul class="menu__box">
+		<li><a class="menu__item" href="sustaine.html">Home</a></li>
+		<li><a class="menu__item" href="pages/about.html">About</a></li>
+		<li><a class="menu__item" href="pages/submit.html">Submit</a></li>
+		<li><a class="menu__item" href="pages/drop-off.html">Drop-Off</a></li>
+		<li><a class="menu__item" href="pages/mail-in.html">Mail-In</a></li>
+		<li><a class="menu__item" href="pages/pickup-services.html">Pickup Services</a></li>
+		<li><a class="menu__item" href="pages/contact.html">Contact</a></li>
+		</ul>
+	</div>
+	<div class="width">
+		<div id="spacer"></div>
+		<h1><a href="sustaine.html">Sustaine</a></h1>
+		<h2>Live Sustainably.</h2>
+		<p>
+			Fast fashion is one of the largest contributers of waste, pollution, and global warming. One of the best ways to reduce waste in our landfills 
+			is by recycling and donating our unwanted clothes. NYC has hundreds of drop-off locations and free resources for residents to donate their unwanted articles
+			(of clothing, shoes, accessories, and more!) and Sustaine's mission is to compile these resouces onto one easily-accessible site, in turn, reducing
+			the amount of waste in our landfills and slowing down the consequences of global warming.
+		</p>
 
 
- window.onscroll = function() {myFunction()};
-  
- var navbar = document.getElementById("navbar");
- var sticky = navbar.offsetTop;
+		<h3>How Do You Want to Donate?</h3>
 
- function initMap(){
-	//map options
-	var options = {
-		zoom: 11,
-		center: {lat: 40.7128, lng: -74.0060} //nyc lat & lng
-	}
-	//new map
-	var map = new 
-	google.maps.Map(document.getElementById('map'), options);
-
-	/*
-	//add marker
-	var marker = new google.maps.Marker({
-		position: {lat: 40.714003, lng: -73.858929},
-		map:map
-	});
-
-	//text popup info window
-	var infoWindow =  new google.maps.InfoWindow({
-		content: '<h1>HELPSY</h1>'
-	})
-	//on click - shows text popup info window
-	marker.addListener('click', function(){
-		infoWindow.open(map, marker);
-	});
-	*/
-
-	//array of markers - add markers here
-	var markers = [
-		{
-			coords:{lat: 40.714003, lng: -73.858929},
-			content:'<h4>Vendor Name: Helpsy<br>Address: 75-41 Yellowstone Blvd<br>Phone: 718-275-3800<br>Email: Victor@helpsy.co<br>Website: https://www.helpsy.co<br>Accepting: Clothing, Shoes, Coats, Accessories, Bedding, Towels, Other</h4>'
-		},
-		{
-			coords:{lat: 40.763755, lng: -73.961792},
-			content:'<h4>Vendor Name: Housing Works<br>Address: 1222 2 Ave<br>Phone: 347-473-7400<br>Email: info@housingworks.org<br>Website: https://www1.nyc.gov/assets/donate/site/Directory/Details/29/74<br>Accepting: Clothing, Shoes, Coats, Accessories</h4>'
-		},
-		{
-			coords:{lat: 40.613489, lng: -74.12241},
-			content:'<h4>Vendor Name: Monkey Girlz Treasures Consignment Boutique<br>Address: 565 Manor Rd<br>Phone: 718-981-0706<br>Email: mkygirlz@gmail.com<br>Website: https://www1.nyc.gov/assets/donate/site/Directory/Details/77/123<br>Accepting: Contact store for details</h4>'
-		},
-        {
-			coords:{lat: 40.67218, lng: -73.9835},
-			content:'<h4>Vendor Name: Green Tree Textiles at Park Slopes Down to Earth Farmers Market<br>Address: 337 5 Ave<br>Phone: 908-245-9300<br>Email: info@greentreetextiles.org<br>Website: https://www1.nyc.gov/assets/donate/site/Directory/Details/507/999<br>Accepting: Clothing, Shoes, Accessories, Bedding, Linens, Towels, Coats</h4>'
-		},
-        {
-			coords:{lat: 40.806641, lng: -73.920227},
-			content:'<h4>Vendor Name: USAGAIN LLC<br>Address: 199 Brook Ave<br>Phone: 347-278-3253<br>Email: s.walsh@usagain.com<br>Website: http://www.usagain.com/<br>Accepting: Clothing, Shoes</h4>'
-		},
-
-	];
-
-	//loop through markers
-	for(var i = 0; i < markers.length; i++){
-		//add marker
-		addMarker(markers[i]);
-	}
-
-/*
-	addMarker({
-		coords:{lat: 40.714003, lng: -73.858929},
-		content:'<h3>Helpsy</h3>'
-	});
-*/
-	//add marker function
-	function addMarker(props){
-		var marker = new google.maps.Marker({
-			position: props.coords,
-			map:map,
-			//icon:props.iconImage
-		});
-
-		//check for custom icon
-		if(props.iconImage){
-			//set icon image
-			marker.setIcon(props.iconImage);
+		<div id="link-buttons">
+			<a href="pages/drop-off.html">
+				<div id="box2"><h2>Drop-Off</h2>
+			</div></a>
+			<a href="pages/mail-in.html">
+				<div id="box2"><h2>Mail-In</h2>
+			</div></a>
+			<a href="pages/pickup-services.html">
+				<div id="box2"><h2>Pick-Up Service</h2>
+			</div></a>
+		</div>
+		<div id="spacer"></div>
+	<p>
+		<ul>
+			<li>In America alone, an estimated 11.3 million tons of textile waste - equivalent to 85% of all textiles - end up 
+			in landfills on a yearly basis (<a href="https://earth.org/statistics-about-fast-fashion-waste/#:~:text=In%20America%20alone%2C%20an%20estimated,landfills%20on%20a%20yearly%20basis.">Source</a>).</li>
+			<li>Sustaine compiled over 100 free NYC resources to encourage sustainability, promote charitability in our communities,
+			and reduce carbon emissions.</li>
+		</ul>
+		</p>
+	</div>
+	<div id="spacer"></div>
+	<script>    
+		function myFunction() {
+			if (window.pageYOffset >= sticky)  {
+			navbar.classList.add("sticky")
+			} else {
+			navbar.classList.remove("sticky");
+			}
 		}
+		
+		window.onscroll = function() {myFunction()};
+		
+		var navbar = document.getElementById("navbar");
+		var sticky = navbar.offsetTop;
 
-		//check for content
-		if(props.content){
-			var infoWindow =  new google.maps.InfoWindow({
-				content:props.content
-			});
-			//on click - shows text popup info window
-			marker.addListener('click', function(){
-				infoWindow.open(map, marker);
-			});
-		}
+			// Set the date we're counting down to
+	var countDownDate = new Date("July 20, 2029 13:00:00").getTime();
+
+	// Update the count down every 1 second
+	var x = setInterval(function() {
+
+	// Get today's date and time
+	var now = new Date().getTime();
+		
+	// Find the distance between now and the count down date
+	var distance = countDownDate - now;
+		
+	// Time calculations for days, hours, minutes and seconds
+	var days = Math.floor(distance / (1000 * 60 * 60 * 24) % 365);
+	var years = Math.floor(distance / (1000 * 60 * 60 * 24) / 365);
+	var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+	var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+	var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+		
+	// Output the result in an element with id="demo"
+	document.getElementById("demo").innerHTML = years + " years " + days + " days " + "\n" + hours + "h " + minutes + "m " + seconds + "s ";
+		
+	// If the count down is over, write some text 
+	if (distance < 0) {
+		clearInterval(x);
+		document.getElementById("demo").innerHTML = "EXPIRED";
 	}
-}
+	}, 1000);
 
- </script>
-    
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOo0egIH6DL94gNcwfv4BNVhzHlujNGaE&callback=initMap"></script>
+	</script>
+</div>
+<footer>
+	<small>Copyright &copy; 2022 Sustaine. All Rights Reserved</small> 
+</footer>
 </body>
 </html>
